@@ -7,14 +7,12 @@ compatibility_flags = ["nodejs_compat"]
 assets = { directory = "./public" }
 # Here we define the basic D1 Database binding.
 
-[[d1_databases]]
-binding = "DB"
-database_name = "eclipsegpt-db"
-database_id = "00000000-0000-0000-0000-000000000000" # Replace with actual ID after creation
-migrations_dir = "migrations"
+# Variables and D1 Bindings are now managed fully via the Cloudflare Pages UI Dashboard.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "eclipsegpt-db"
+# database_id = "00000000-0000-0000-0000-000000000000"
+# migrations_dir = "migrations"
 
-[vars]
-AI_API_URL = "https://api.featherless.ai/v1/chat/completions"
-# AI_API_KEY is secret, we don't put it here.
-# ADMIN_PASSWORD is secret, we don't put it here.
-# SESSION_SECRET is secret, we don't put it here.
+# [vars]
+# AI_API_URL = "https://api.featherless.ai/v1/chat/completions"
