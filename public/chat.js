@@ -407,7 +407,7 @@ function setupEventListeners() {
         selects[0].value = savedTheme;
         applyTheme(savedTheme);
 
-        const savedAccent = localStorage.getItem('eclipsegpt_accent') || 'Par défaut';
+        const savedAccent = localStorage.getItem('eclipsegpt_accent') || 'Rouge EclipseGPT';
         selects[1].value = savedAccent;
         applyAccent(savedAccent);
 
@@ -451,9 +451,15 @@ function setupEventListeners() {
     }
 
     function applyAccent(val) {
-        if (val === 'Par défaut') {
-            document.documentElement.style.setProperty('--accent-red', '#ffffff');
-        } else {
+        let hex = '#e53935';
+        if (val === 'Par défaut (Bleu)') hex = '#3b82f6';
+        else if (val === 'Rouge EclipseGPT') hex = '#e53935';
+        else if (val === 'Vert Cyber') hex = '#10b981';
+        else if (val === 'Violet Fluo') hex = '#8b5cf6';
+        else if (val === 'Orange Hacking') hex = '#f97316';
+        document.documentElement.style.setProperty('--accent-red', hex);
+        document.documentElement.style.setProperty('--accent-red-bright', hex);
+    } else {
             document.documentElement.style.setProperty('--accent-red', '#e53935');
         }
     }
