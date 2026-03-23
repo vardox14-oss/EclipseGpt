@@ -1,0 +1,544 @@
+/* ============================================
+   GLOBAL UTILITIES
+   ============================================ */
+.text-red-glow {
+    color: var(--accent-red);
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    line-height: 1.1;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 48px;
+    line-height: 1.6;
+}
+
+.btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all var(--transition-normal);
+}
+
+.btn-outline-white:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   SECTION 2: MAXIMISER VOTRE PRODUCTION
+   ============================================ */
+.max-prod-section {
+    padding: 120px 24px;
+    background: #000;
+}
+
+.max-prod-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.prod-card {
+    background: linear-gradient(145deg, #1f0101, #0a0000);
+    border: 1px solid rgba(255, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 30px;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.prod-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.3);
+}
+
+.prod-icon {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.prod-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.prod-card p {
+    font-size: 0.95rem;
+    color: #cca4a4;
+    line-height: 1.5;
+}
+
+/* ============================================
+   SECTION 3: HORIZONS ILLIMITÉS
+   ============================================ */
+.horizons-section {
+    padding: 100px 24px;
+    background: linear-gradient(to bottom, #000, #030303);
+}
+
+.horizons-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.horizons-left {
+    flex: 1;
+}
+
+.horizons-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+.horizons-right {
+    flex: 1.2;
+}
+
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.tag-pill {
+    padding: 12px 24px;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all var(--transition-normal);
+}
+
+.tag-pill:hover {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* ============================================
+   SECTION 4: CHAT DEMO
+   ============================================ */
+.chat-demo-section {
+    padding: 100px 24px;
+    background: #030303;
+}
+
+.chat-demo-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.chat-demo-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.iphone-mockup-2 {
+    transform: none;
+    /* remove tilt for the second mockup */
+    height: 550px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+    /* fades out */
+}
+
+.chat-demo-right {
+    flex: 1;
+}
+
+.chat-demo-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+/* ============================================
+   SECTION 5: COMMUNAUTÉ & TESTIMONIALS
+   ============================================ */
+.testimonials-section {
+    padding: 120px 24px;
+    background: #050505;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.testimonial-card {
+    background: #111;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    background: #222;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+}
+
+.testimonial-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.stars {
+    color: var(--accent-red);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.testimonial-card p {
+    color: #aaa;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   SECTION 6: VOICE MESSAGES
+   ============================================ */
+.voice-section {
+    padding: 100px 24px;
+    background: #080808;
+}
+
+/* ============================================
+   SECTION 7: ORB / DAILY
+   ============================================ */
+.orb-section {
+    padding: 40px 24px 100px;
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+}
+
+.orb-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orb-glow-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+}
+
+.ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.1) inset;
+}
+
+.ring-1 {
+    width: 300px;
+    height: 300px;
+    animation: pulseRing 4s infinite alternate;
+}
+
+.ring-2 {
+    width: 450px;
+    height: 450px;
+    border-color: rgba(255, 0, 0, 0.05);
+    animation: pulseRing 5s infinite alternate-reverse;
+}
+
+.ring-3 {
+    width: 600px;
+    height: 600px;
+    border-color: rgba(255, 0, 0, 0.02);
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 1;
+    }
+}
+
+.orb-sphere {
+    position: relative;
+    z-index: 5;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.4) 40%, rgba(0, 0, 0, 0.8) 80%);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2), inset -20px -20px 50px rgba(0, 0, 0, 0.9);
+}
+
+.orb-pedestal {
+    position: absolute;
+    bottom: 50px;
+    width: 600px;
+    height: 80px;
+    background: linear-gradient(to top, #000, #333);
+    border-radius: 50%;
+    filter: blur(10px);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.floating-tooltip {
+    position: absolute;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: #eee;
+    font-size: 0.85rem;
+    max-width: 250px;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.tooltip-icon {
+    color: var(--accent-red);
+    margin-right: 8px;
+}
+
+.tooltip-1 {
+    top: 20%;
+    left: 15%;
+    margin-top: -50px;
+}
+
+.tooltip-2 {
+    top: 25%;
+    right: 15%;
+}
+
+.tooltip-3 {
+    bottom: 30%;
+    left: 10%;
+    margin-bottom: -50px;
+}
+
+.tooltip-4 {
+    bottom: 25%;
+    right: 10%;
+}
+
+/* ============================================
+   SECTION 8: INTEGRATION
+   ============================================ */
+.integration-section {
+    padding: 100px 24px;
+    background: #000;
+}
+
+.integration-text {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.integration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.int-card {
+    background: #111;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.int-icon-red {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-red);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+}
+
+.int-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.int-card p {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ============================================
+   SECTION 9: DARKBOOK
+   ============================================ */
+.darkbook-section {
+    position: relative;
+    padding: 150px 24px;
+    background: #000;
+    overflow: hidden;
+}
+
+.darkbook-bg {
+    position: absolute;
+    inset: -50%;
+    background-image: radial-gradient(circle at center, rgba(255, 0, 0, 0.1), transparent 50%);
+    background-size: 100% 100%;
+    opacity: 0.5;
+    /* Optional: add a pure CSS spiral/wheel animation if needed */
+}
+
+/* ============================================
+   SECTION 10: PRE-FOOTER
+   ============================================ */
+.pre-footer-section {
+    background: #000;
+}
+
+.iphone-fade-mockup {
+    width: 300px;
+    height: 300px;
+    background: #111;
+    border: 8px solid #222;
+    border-radius: 40px 40px 0 0;
+    margin: 0 auto;
+    border-bottom: none;
+    box-shadow: inset 0 20px 50px rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(to bottom, #1a1a1a, #000);
+}
+
+.red-line-separator {
+    height: 2px;
+    background: var(--accent-red);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.5;
+}
+
+/* ============================================
+   TRUE FOOTER
+   ============================================ */
+.real-footer {
+    padding: 40px 24px;
+    background: #000;
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-left .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.footer-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}

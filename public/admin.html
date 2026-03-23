@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EclipseGPT - Panneau d'Administration</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- UNAUTHORIZED MODAL -->
+    <div id="unauthorizedOverlay" class="overlay active">
+        <div class="login-box" style="text-align: center;">
+            <img src="logo.jpg" alt="EclipseGPT" class="login-logo" style="margin: 0 auto 1.5rem auto; display: block;">
+            <h2 style="color: #ff4d4d; margin-bottom: 1rem;">Accès Restreint</h2>
+            <p style="margin-bottom: 2rem; line-height: 1.5;">Ce panneau est strictement réservé à l'administrateur.<br>Veuillez vous connecter avec le compte Discord <strong>vardox58</strong>.</p>
+            <a href="/login.html" class="btn-primary" style="display: block; text-decoration: none;">Aller à la connexion</a>
+        </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="admin-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.jpg" alt="Logo">
+                <h3>Eclipse Admin</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-target="dashboard">Vue d'ensemble</button>
+                <button class="nav-item" data-target="keys">Clés de licence</button>
+                <button class="nav-item" data-target="conversations">Conversations</button>
+                <button class="nav-item" data-target="bans">Bannissements (IP)</button>
+                <a href="/chat.html" class="nav-item back-link">← Retour au Chat</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <!-- SECTION: Dashboard -->
+            <section id="dashboard" class="admin-section active">
+                <header class="section-header">
+                    <h1>Vue d'ensemble</h1>
+                    <p>Statistiques en temps réel du SaaS EclipseGPT.</p>
+                </header>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Clés Actives</h4>
+                        <div class="stat-value" id="statKeys">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Conversations</h4>
+                        <div class="stat-value" id="statConvs">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Adresses Bannies</h4>
+                        <div class="stat-value" id="statBans">0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Keys -->
+            <section id="keys" class="admin-section">
+                <header class="section-header">
+                    <h1>Gestion des Clés de Licence</h1>
+                    <button id="openGenerateModal" class="btn-primary">+ Générer une Clé</button>
+                </header>
+                <div class="table-container">
+                    <table id="keysTable">
+                        <thead>
+                            <tr>
+                                <th>Clé</th>
+                                <th>Durée (Jours)</th>
+                                <th>Statut</th>
+                                <th>Date Création</th>
+                                <th>Expire le</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION: Conversations -->
+            <section id="conversations" class="admin-section">
+                <header class="section-header">
+                    <h1>Surveillance des Conversations</h1>
+                    <p>Liste des conversations récentes avec l'IA.</p>
+                </header>
+                <div class="table-container">
+                    <table id="convsTable">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Clé Utilisateur</th>
+                                <th>Dernière activité</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION: Bans -->
+            <section id="bans" class="admin-section">
+                <header class="section-header">
+                    <h1>Adresses IP Bannies</h1>
+                    <div class="ban-form">
+                        <input type="text" id="banIpInput" placeholder="Adresse IP (ex: 192.168.1.1)">
+                        <input type="text" id="banReasonInput" placeholder="Raison">
+                        <button id="banSubmitBtn" class="btn-danger">Bannir l'IP</button>
+                    </div>
+                </header>
+                <div class="table-container">
+                    <table id="bansTable">
+                        <thead>
+                            <tr>
+                                <th>Adresse IP</th>
+                                <th>Raison</th>
+                                <th>Date du ban</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL: Generate Key -->
+    <div id="generateModal" class="overlay">
+        <div class="modal-box">
+            <h2>Générer des Clés</h2>
+            <div class="form-group">
+                <label>Durée de la licence</label>
+                <select id="keyDuration">
+                    <option value="1">1 Jour</option>
+                    <option value="7">1 Semaine</option>
+                    <option value="30">1 Mois</option>
+                    <option value="0">À Vie (Lifetime)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Nombre de clés à générer</label>
+                <input type="number" id="keyCount" value="1" min="1" max="100">
+            </div>
+            <div class="modal-actions">
+                <button id="closeGenerateModal" class="btn-secondary">Annuler</button>
+                <button id="submitGenerateKey" class="btn-primary">Générer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: View Chat -->
+    <div id="viewChatModal" class="overlay">
+        <div class="modal-box chat-modal">
+            <div class="chat-header">
+                <h2 id="chatViewTitle">Conversation</h2>
+                <button id="closeChatModal" class="close-btn">×</button>
+            </div>
+            <div id="chatViewMessages" class="chat-messages-container">
+                <!-- Messages populated via JS -->
+                <div class="loading-spinner">Chargement...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATIONS -->
+    <div id="toastContainer"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

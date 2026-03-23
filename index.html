@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EclipseGPT - L'IA Non Censurée | Sans limites ni filtres</title>
+    <meta name="description"
+        content="EclipseGPT - L'IA non censurée. Posez les questions que ChatGPT refuse. Accès illimité, OSINT intégré, recherche web temps réel.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- HEADER / NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="login.html" class="logo">
+                <img src="logo.jpg" alt="EclipseGPT Logo" class="logo-img">
+                Dark<span class="logo-accent">GPT</span>
+            </a>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-cta-nav">Commencer maintenant</a>
+                <button class="lang-toggle" id="langToggle">
+                    FR Français
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="margin-left:4px;">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg>
+                </button>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-blur"></div>
+        <div class="container hero-container">
+            <div class="hero-left">
+                <h1 class="hero-title animate-fade-in visible">
+                    L'IA qui n'a <span class="hero-title-accent">aucune limite</span>
+                </h1>
+                <p class="hero-subtitle animate-fade-in visible delay-1">
+                    EclipseGPT est la version ultime de l'assistant intelligent, conçu pour
+                    briser toutes les barrières et vous offrir une expérience sans limites.
+                </p>
+                <div class="hero-buttons animate-fade-in visible delay-2">
+                    <a href="login.html" class="btn-primary glow-btn">Commencer maintenant</a>
+                </div>
+            </div>
+
+            <div class="hero-right animate-fade-in visible delay-3">
+                <div class="circuit-bg"></div>
+                <img src="https://i.imgur.com/uVjkUe7.png" alt="EclipseGPT App on iPhone" class="iphone-mockup-img">
+                <div class="platforms-badge">
+                    <span>Disponible sur</span>
+                    <div class="platforms-icons">
+                        <div class="platform-chip"><span class="icon-tele">✈</span> Telegram</div>
+                        <div class="platform-chip"><span class="icon-wa">💬</span> WhatsApp</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Maximiser votre production -->
+    <section class="max-prod-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Maximiser <span
+                    class="text-red-glow">votre<br>production</span></h2>
+            <p class="section-subtitle text-center reveal delay-1">Explorez un Monde de Possibilités avec l'Assistant
+                Personnel le Plus
+                Avancé<br>du Moment</p>
+            <div class="text-center mt-30">
+                <a href="login.html" class="btn-outline-white">Commencer maintenant</a>
+            </div>
+
+            <div class="max-prod-grid">
+                <!-- Row 1 -->
+                <div class="prod-card reveal delay-1">
+                    <div class="prod-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                    <div class="prod-content">
+                        <h3>Réponses Instantanées</h3>
+                        <p>Obtenez des réponses immédiates à vos questions les plus courantes.</p>
+                    </div>
+                </div>
+                <div class="prod-card reveal delay-2">
+                    <div class="prod-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="prod-content">
+                        <h3>Prédictions d'Investissement</h3>
+                        <p>Anticipez les tendances pour des décisions d'investissement éclairées.</p>
+                    </div>
+                </div>
+                <div class="prod-card reveal delay-3">
+                    <div class="prod-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="prod-content">
+                        <h3>Gestion Financière Simplifiée</h3>
+                        <p>Suivez et gérez vos finances personnelles avec facilité.</p>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="prod-card reveal delay-1">
+                    <div class="prod-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="prod-content">
+                        <h3>Cuisine Gourmet</h3>
+                        <p>Découvrez des recettes de chef et des astuces culinaires.</p>
+                    </div>
+                </div>
+                <div class="prod-card reveal delay-2">
+                    <div class="prod-icon"><i class="fa-solid fa-futbol"></i></div>
+                    <div class="prod-content">
+                        <h3>Paris Sportifs Avisés</h3>
+                        <p>Recevez des conseils pour maximiser vos gains dans les jeux d'argent.</p>
+                    </div>
+                </div>
+                <div class="prod-card reveal delay-3">
+                    <div class="prod-icon"><i class="fa-solid fa-file-signature"></i></div>
+                    <div class="prod-content">
+                        <h3>Édition de Documents Facilitée</h3>
+                        <p>Créez et éditez des documents de manière assistée.</p>
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="prod-card reveal delay-1">
+                    <div class="prod-icon"><i class="fa-solid fa-language"></i></div>
+                    <div class="prod-content">
+                        <h3>Traduction de Qualité</h3>
+                        <p>Communiquez dans différentes langues avec une traduction de qualité.</p>
+                    </div>
+                </div>
+                <div class="prod-card reveal delay-2">
+                    <div class="prod-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                    <div class="prod-content">
+                        <h3>Suivi de la Santé</h3>
+                        <p>Obtenez un soutien précieux pour votre santé et votre bien-être.</p>
+                    </div>
+                </div>
+                <div class="prod-card reveal delay-3">
+                    <div class="prod-icon"><i class="fa-solid fa-circle-info"></i></div>
+                    <div class="prod-content">
+                        <h3>Accès aux Informations Clés</h3>
+                        <p>Explorez une base de données riche en informations pertinentes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Des horizons illimités -->
+    <section class="horizons-section">
+        <div class="container horizons-container">
+            <div class="horizons-left reveal">
+                <h2 class="section-title reveal">Des horizons<br><span class="text-red-glow">illimités</span></h2>
+                <p class="horizons-text">
+                    EclipseGPT transcende les frontières traditionnelles des
+                    assistants personnels, offrant un soutien et une expertise
+                    dans une multitude de domaines. Découvrez comment il
+                    peut révolutionner chaque aspect de votre vie.
+                </p>
+                <a href="login.html" class="btn-primary" style="margin-top: 20px;">Commencer maintenant</a>
+            </div>
+            <div class="horizons-right">
+                <div class="tags-cloud reveal delay-2">
+                    <span class="tag-pill">Trading</span>
+                    <span class="tag-pill">Finance</span>
+                    <span class="tag-pill">Organisation</span>
+                    <span class="tag-pill">Gestion de Projet</span>
+                    <span class="tag-pill">Prédiction sportives</span>
+                    <span class="tag-pill">Rédaction</span>
+                    <span class="tag-pill">Traduction</span>
+                    <span class="tag-pill">Investissement</span>
+                    <span class="tag-pill">Vie quotidienne</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Chattez avec l'IA -->
+    <section class="chat-demo-section">
+        <div class="container chat-demo-container">
+            <div class="chat-demo-left">
+                <img src="phone.png" alt="EclipseGPT Chat Demo" class="iphone-mockup-img mockup-2">
+            </div>
+            <div class="chat-demo-right reveal">
+                <h2 class="section-title reveal">Chattez <span class="text-red-glow">avec l'IA</span></h2>
+                <p class="chat-demo-text">
+                    Avec EclipseGPT, vous disposez d'un compagnon de
+                    confiance, capable de répondre à toutes vos questions,
+                    sans exception. Plus besoin de chercher, EclipseGPT a la
+                    réponse.
+                </p>
+                <a href="login.html" class="btn-primary" style="margin-top: 20px;">Commencer maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Rejoignez une communauté -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Rejoignez une communauté<br><span
+                    class="text-red-glow">d'utilisateurs
+                    comblés</span></h2>
+            <p class="section-subtitle text-center reveal delay-1">
+                Découvrez les témoignages de nos utilisateurs et rejoignez la communauté<br>
+                EclipseGPT. Des milliers d'utilisateurs ont fait le choix de la simplicité et de<br>
+                l'efficacité avec notre chatbot intelligent sans limite.
+            </p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal delay-1">
+                    <div class="testimonial-header">
+                        <img src="https://ui-avatars.com/api/?name=Jules+D&background=random&color=fff"
+                            class="testimonial-avatar" alt="JD">
+                        <div class="testimonial-name">Jules D.</div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>EclipseGPT m'aide au quotidien pour répondre à toutes mes questions. Je gagne énormément de temps et
+                        surtout il n'y a pas de limite comme sur d'autres IA.</p>
+                </div>
+                <div class="testimonial-card reveal delay-2">
+                    <div class="testimonial-header">
+                        <img src="https://ui-avatars.com/api/?name=Andrew+P&background=random&color=fff"
+                            class="testimonial-avatar" alt="AP">
+                        <div class="testimonial-name">Andrew P.</div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>J'utilisais beaucoup Chat GPT mais j'étais souvent confronté à des blocages et sur certains
+                        sujets l'IA n'arrivait pas à me répondre. Avec EclipseGPT je n'ai pas encore eu ce problème !</p>
+                </div>
+                <div class="testimonial-card reveal delay-3">
+                    <div class="testimonial-header">
+                        <img src="https://ui-avatars.com/api/?name=Chloe+L&background=random&color=fff"
+                            class="testimonial-avatar" alt="CL">
+                        <div class="testimonial-name">Chloé L.</div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>Je me sert de EclipseGPT dans mon travail, ça me permet de rédiger des e-mails complexes et même de
+                        les traduire, c'est super pratique et je gagne beaucoup de temps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Messages Vocaux -->
+    <section class="voice-section reveal">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Parlez avec votre assistant<br><span class="text-red-glow">par
+                    messages vocaux</span></h2>
+            <p class="section-subtitle text-center reveal delay-1">
+                Interagissez avec notre IA de manière naturelle et intuitive en envoyant des messages vocaux via<br>
+                WhatsApp et Telegram. Cette fonctionnalité révolutionnaire offre une expérience utilisatrice<br>
+                inégalée, vous permettant de poser des questions et d'obtenir des réponses instantanées,<br>
+                comme une réelle discussion.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 7: Orb / Daily Improvement -->
+    <section class="orb-section">
+        <div class="text-center" style="margin-bottom: 40px; position:relative; z-index: 10;">
+            <a href="login.html" class="btn-outline-white">Commencer maintenant</a>
+        </div>
+        <div class="orb-container reveal">
+            <div class="floating-tooltip tooltip-1">
+                Qui sera le futur président américain en 2024 ?
+            </div>
+            <div class="floating-tooltip tooltip-2">
+                Comment optimiser et réduire mes impôts ?
+            </div>
+            <div class="floating-tooltip tooltip-3">
+                Donne moi un plan d'investissement sur 2 ans avec un rendement...
+            </div>
+            <div class="floating-tooltip tooltip-4">
+                Quelle est la meilleure ville pour investir dans l'immobilier ?
+            </div>
+
+            <div class="orb-glow-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+            </div>
+            <div class="orb-sphere"></div>
+            <div class="orb-pedestal"></div>
+        </div>
+        <div class="container text-center" style="position: relative; z-index: 10; margin-top: -60px;">
+            <h2 class="section-title text-left" style="font-size: 2.5rem; margin-top: 50px;">Améliorez <span
+                    class="text-red-glow">votre quotidien</span></h2>
+        </div>
+    </section>
+
+    <!-- SECTION 8: WhatsApp & Telegram integration -->
+    <section class="integration-section">
+        <div class="container">
+            <h2 class="section-title text-left reveal">avec EclipseGPT sur WhatsApp et Telegram</h2>
+            <p class="integration-text">
+                Plus aucune de vos questions ne restera sans réponse grâce à EclipseGPT, le nouvel assistant intelligent
+                sans aucune limite. Intégré à vos applications de messagerie préférées, l'IA vous offrira un gain de
+                temps et de productivité.
+            </p>
+            <div style="margin-bottom: 40px;">
+                <a href="login.html" class="btn-outline-white">Commencer maintenant</a>
+            </div>
+
+            <div class="integration-grid">
+                <div class="int-card reveal delay-1">
+                    <div class="int-icon-red"><i class="fa-solid fa-infinity"></i></div>
+                    <h3>Des possibilités infinies</h3>
+                    <p>Analysez les marchés, prédisez les résultats sportifs, et bien plus encore, sans aucune
+                        restriction.</p>
+                </div>
+                <div class="int-card reveal delay-2">
+                    <div class="int-icon-red"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h3>Simple et intuitif</h3>
+                    <p>Un assistant à la communication naturelle et facile, même pour les novices en technologie.</p>
+                </div>
+                <div class="int-card reveal delay-3">
+                    <div class="int-icon-red"><i class="fa-regular fa-heart"></i></div>
+                    <h3>À votre service 24/7</h3>
+                    <p>Un compagnon fidèle, prêt à répondre à vos besoins à tout moment et en tout lieu.</p>
+                </div>
+                <div class="int-card reveal delay-1">
+                    <div class="int-icon-red"><i class="fa-regular fa-handshake"></i></div>
+                    <h3>Parlez en Confiance</h3>
+                    <p>La protection de vos données et de votre vie privée est notre priorité absolue.</p>
+                </div>
+                <div class="int-card reveal delay-2">
+                    <div class="int-icon-red"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    <h3>Boostez Votre Productivité</h3>
+                    <p>Partagez des informations et travaillez ensemble directement depuis vos conversations.</p>
+                </div>
+                <div class="int-card reveal delay-3">
+                    <div class="int-icon-red"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    <h3>Enrichissez vos interactions</h3>
+                    <p>Analysez des images, vidéos et documents pour une communication plus riche et interactive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: DarkBook CTA -->
+    <section class="darkbook-section reveal">
+        <div class="darkbook-bg"></div>
+        <div class="container text-center" style="position: relative; z-index: 2;">
+            <h2 class="section-title" style="font-size: 3rem;">Recevez <span class="text-red-glow">le DarkBook</span>
+            </h2>
+            <p class="section-subtitle" style="max-width: 800px; margin: 20px auto 40px;">
+                Interagissez avec notre IA de manière naturelle et intuitive en envoyant des
+                messages vocaux via WhatsApp et Telegram. Cette fonctionnalité révolutionnaire
+                offre une expérience utilisatrice inégalée, vous permettant de poser des questions
+                et d'obtenir des réponses instantanées, comme une réelle discussion.
+            </p>
+            <a href="login.html" class="btn-primary" style="padding: 16px 40px;">Commencer maintenant</a>
+        </div>
+    </section>
+
+    <!-- SECTION 10: Pre-Footer Floating Tooltips on Phone -->
+    <section class="pre-footer-section text-center">
+        <!-- This is a visual filler based on the screenshot, it can be styled later -->
+        <div class="pre-footer-content" style="height: auto; position: relative; margin: 80px auto -40px;">
+            <img src="https://i.imgur.com/f3kQ3CT.png" alt="EclipseGPT App" class="iphone-fade-img">
+        </div>
+        <div class="red-line-separator"></div>
+    </section>
+
+    <!-- TRUE FOOTER -->
+    <footer class="real-footer">
+        <div class="container footer-flex">
+            <div class="footer-left">
+                <a href="login.html" class="logo">
+                    <img src="logo.jpg" alt="EclipseGPT Logo" class="logo-img-footer">
+                    Dark<span style="color:white; font-weight:normal;">GPT</span>
+                </a>
+                <p class="footer-sub">Votre assistant intelligent sans limites<br>sur WhatsApp et Telegram</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="login.html">Legal & Privacy</a>
+                    <a href="login.html">Terms & Conditions</a>
+                    <a href="login.html">Contact</a>
+                </div>
+                <p class="footer-copy">© 2026 Dark GPT</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

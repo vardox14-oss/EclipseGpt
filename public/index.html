@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EclipseGPT — L'IA Sans Limites</title>
+    <meta name="description"
+        content="EclipseGPT — L'intelligence artificielle non censurée. Posez les questions que personne ne veut entendre.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- EMBER PARTICLES CANVAS (Background) -->
+    <canvas id="emberCanvas"></canvas>
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="logo">
+                <img src="logo.jpg" alt="EclipseGPT" class="logo-img">
+                Eclipse<span class="logo-accent">GPT</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#features">Fonctionnalités</a>
+                <a href="#how">Comment ça marche</a>
+                <a href="#testimonials">Avis</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-cta-nav">
+                    <i class="fa-brands fa-discord" style="margin-right:6px;"></i>
+                    Se connecter
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-grid-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-badge" data-reveal data-reveal-delay="0">
+                <span class="badge-dot"></span>
+                IA Non Censurée — Disponible maintenant
+            </div>
+            <h1 class="hero-title" data-reveal data-reveal-delay="100">
+                L'intelligence sans<br><span class="gradient-text">aucune limite.</span>
+            </h1>
+            <p class="hero-subtitle" data-reveal data-reveal-delay="200">
+                EclipseGPT répond à tout, sans filtres ni restrictions.
+                Cybersécurité, finance, OSINT, code, rédaction — sans modération.
+            </p>
+            <div class="hero-actions" data-reveal data-reveal-delay="300">
+                <a href="login.html" class="btn-primary glow-btn">
+                    <i class="fa-brands fa-discord"></i>
+                    Commencer avec Discord
+                </a>
+                <a href="#features" class="btn-ghost">
+                    Découvrir
+                    <i class="fa-solid fa-arrow-down" style="margin-left:6px;"></i>
+                </a>
+            </div>
+            <div class="hero-stats" data-reveal data-reveal-delay="400">
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Sans limites</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Disponible</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">&lt;2s</span>
+                    <span class="stat-label">Temps de réponse</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag">Fonctionnalités</span>
+                <h2 class="section-title">Tout ce dont vous avez <span class="gradient-text">besoin.</span></h2>
+                <p class="section-subtitle">Des capacités avancées pour chaque domaine, sans aucune restriction.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-reveal data-reveal-delay="0">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Cybersécurité</h3>
+                    <p>Analyse de vulnérabilités, OSINT, pentesting — sans aucun filtre de sécurité.</p>
+                </div>
+                <div class="feature-card" data-reveal data-reveal-delay="100">
+                    <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>Génération de Code</h3>
+                    <p>Python, JavaScript, C++, Rust — code généré sans restrictions ni avertissements.</p>
+                </div>
+                <div class="feature-card" data-reveal data-reveal-delay="200">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Finance & Trading</h3>
+                    <p>Analyses de marché, stratégies d'investissement et prédictions sans limites.</p>
+                </div>
+                <div class="feature-card" data-reveal data-reveal-delay="300">
+                    <div class="feature-icon"><i class="fa-solid fa-language"></i></div>
+                    <h3>Multilingue</h3>
+                    <p>Traduction et rédaction dans +50 langues avec une précision native.</p>
+                </div>
+                <div class="feature-card" data-reveal data-reveal-delay="400">
+                    <div class="feature-icon"><i class="fa-solid fa-image"></i></div>
+                    <h3>Analyse d'Images</h3>
+                    <p>Envoyez une image et recevez une analyse détaillée grâce à la vision IA.</p>
+                </div>
+                <div class="feature-card" data-reveal data-reveal-delay="500">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Réponses Instantanées</h3>
+                    <p>Streaming en temps réel. Vos réponses arrivent mot par mot, sans attente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section" id="how">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag">Simple</span>
+                <h2 class="section-title">Prêt en <span class="gradient-text">30 secondes.</span></h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card" data-reveal data-reveal-delay="0">
+                    <div class="step-number">01</div>
+                    <h3>Connectez-vous avec Discord</h3>
+                    <p>Un seul clic. Pas de formulaire, pas d'email, pas de mot de passe.</p>
+                </div>
+                <div class="step-connector" data-reveal data-reveal-delay="150"><i class="fa-solid fa-arrow-right"></i>
+                </div>
+                <div class="step-card" data-reveal data-reveal-delay="200">
+                    <div class="step-number">02</div>
+                    <h3>Posez votre question</h3>
+                    <p>Tapez ce que vous voulez. Texte, image, code — tout est accepté.</p>
+                </div>
+                <div class="step-connector" data-reveal data-reveal-delay="350"><i class="fa-solid fa-arrow-right"></i>
+                </div>
+                <div class="step-card" data-reveal data-reveal-delay="400">
+                    <div class="step-number">03</div>
+                    <h3>Recevez une réponse libre</h3>
+                    <p>EclipseGPT répond sans censure, sans disclaimers, sans limites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header" data-reveal>
+                <span class="section-tag">Avis</span>
+                <h2 class="section-title">Ce qu'ils <span class="gradient-text">en pensent.</span></h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-reveal data-reveal-delay="0">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"EclipseGPT m'aide au quotidien. Pas de limites comme ChatGPT, pas de blocages inutiles. Un gain
+                        de temps énorme."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div>
+                            <div class="author-name">Jules D.</div>
+                            <div class="author-role">Développeur</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-reveal data-reveal-delay="150">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Enfin une IA qui ne me dit pas 'je ne peux pas répondre à ça'. EclipseGPT répond vraiment à
+                        tout."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div>
+                            <div class="author-name">Andrew P.</div>
+                            <div class="author-role">Analyste Cyber</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-reveal data-reveal-delay="300">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Je l'utilise pour rédiger et traduire des documents. La qualité est impressionnante et le gain
+                        de temps est réel."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div>
+                            <div class="author-name">Chloé L.</div>
+                            <div class="author-role">Rédactrice</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-glow"></div>
+        <div class="container cta-content" data-reveal>
+            <h2 class="cta-title">Prêt à repousser<br><span class="gradient-text">les limites ?</span></h2>
+            <p class="cta-subtitle">Rejoignez EclipseGPT et accédez à une IA sans aucune barrière.</p>
+            <a href="login.html" class="btn-primary glow-btn" style="font-size:1.1rem; padding: 16px 40px;">
+                <i class="fa-brands fa-discord"></i>
+                Se connecter avec Discord
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <img src="logo.jpg" alt="EclipseGPT" class="logo-img-footer">
+                    Eclipse<span class="logo-accent">GPT</span>
+                </a>
+                <p class="footer-tagline">L'IA sans limites, créée par waypX & clem.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">CGU</a>
+                <a href="#">Confidentialité</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="footer-copy">© 2026 EclipseGPT — Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

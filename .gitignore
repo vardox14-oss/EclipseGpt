@@ -1,0 +1,38 @@
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+error.log
+security.log
+
+# Cloudflare & Databases
+.wrangler/
+*.db
+*.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary scripts
+apply_reveal.js
+fix_wrapping.js
+link_premium.js
+polish_mockup.js
+replace_mockup.js
+update_html.js
+update_logo.js
+update_mockup.js
+update_styles.js
+debug_api.js
+test_vision.js

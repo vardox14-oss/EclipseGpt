@@ -1,0 +1,20 @@
+name = "eclipsegpt-worker"
+main = "src/index.js"
+compatibility_date = "2024-03-20"
+compatibility_flags = ["nodejs_compat"]
+
+# The public directory for Cloudflare Pages (if we use Pages Functions) or static assets
+assets = { directory = "./public" }
+# Here we define the basic D1 Database binding.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "eclipsegpt-db"
+database_id = "00000000-0000-0000-0000-000000000000" # Replace with actual ID after creation
+migrations_dir = "migrations"
+
+[vars]
+AI_API_URL = "https://api.featherless.ai/v1/chat/completions"
+# AI_API_KEY is secret, we don't put it here.
+# ADMIN_PASSWORD is secret, we don't put it here.
+# SESSION_SECRET is secret, we don't put it here.
