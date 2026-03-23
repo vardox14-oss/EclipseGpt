@@ -890,6 +890,8 @@ async function handleSend() {
         const textEl = assistantMsg.querySelector('.message-text');
 
         let lastRenderTime = 0;
+        let streamBuffer = '';
+        
         while (true) {
             const { done, value } = await reader.read();
             if (done) {
@@ -898,24 +900,20 @@ async function handleSend() {
                 break;
             }
 
-            const chunk = decoder.decode(value, { stream: true });
+            streamBuffer += decoder.decode(value, { stream: true });
+            const lines = streamBuffer.split('\n');
+            streamBuffer = lines.pop(); 
 
-            const lines = chunk.split('\n');
             let newlyAddedText = false;
             for (let line of lines) {
-                line = line.trim();
-                if (!line) continue;
+                const trimmed = line.trim();
+                if (!trimmed || !trimmed.startsWith('data: ')) continue;
 
-                let rawData = line;
-                if (line.startsWith('data: ')) {
-                    rawData = line.slice(6);
-                }
-
+                const rawData = trimmed.slice(6);
                 if (rawData === '[DONE]') continue;
 
                 try {
                     const parsed = JSON.parse(rawData);
-                    
                     const content =
                         parsed.choices?.[0]?.delta?.content ||
                         parsed.choices?.[0]?.delta?.reasoning_content ||
@@ -928,28 +926,13 @@ async function handleSend() {
                         newlyAddedText = true;
                     }
                 } catch (e) {
-                    const jsonMatch = rawData.match(/\{.*\}/);
-                    if (jsonMatch) {
-                        try {
-                            const parsed = JSON.parse(jsonMatch[0]);
-                            const content = parsed.choices?.[0]?.delta?.content || parsed.content || '';
-                            if (content) {
-                                assistantText += content;
-                                newlyAddedText = true;
-                            }
-                        } catch (e2) {
-                            if (!rawData.startsWith('{')) {
-                                assistantText += rawData;
-                                newlyAddedText = true;
-                            }
-                        }
-                    }
-                    console.warn('Erreur de parsing ou chunk corrompu', e);
+                    console.warn('SSE Parse Error (ignored chunk):', e);
                 }
             }
+
             if (newlyAddedText) {
                 const now = Date.now();
-                if (now - lastRenderTime > 33) {
+                if (now - lastRenderTime > 40) { // Slight increase to 40ms (~25fps) for smoother low-end performance
                     textEl.innerHTML = formatMessage(assistantText) + '<span class="cursor"></span>';
                     scrollToBottom(false);
                     lastRenderTime = now;
