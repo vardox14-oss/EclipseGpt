@@ -16,7 +16,7 @@
         fetch('/api/session', { credentials: 'include' })
             .then(r => r.json())
             .then(data => {
-                if (!data.authenticated) {
+                if (!data.discordLogged || !data.licenseValid) {
                     window.location.replace('login.html');
                 }
             })
