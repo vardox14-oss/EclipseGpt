@@ -1,6 +1,4 @@
-/* ============================================
-   GLOBAL UTILITIES
-   ============================================ */
+
 .text-red-glow {
     color: var(--accent-red);
     text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
@@ -50,9 +48,7 @@
     border-color: rgba(255, 255, 255, 0.6);
 }
 
-/* ============================================
-   SECTION 2: MAXIMISER VOTRE PRODUCTION
-   ============================================ */
+
 .max-prod-section {
     padding: 120px 24px;
     background: #000;
@@ -97,9 +93,7 @@
     line-height: 1.5;
 }
 
-/* ============================================
-   SECTION 3: HORIZONS ILLIMITÉS
-   ============================================ */
+
 .horizons-section {
     padding: 100px 24px;
     background: linear-gradient(to bottom, #000, #030303);
@@ -150,9 +144,7 @@
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
 }
 
-/* ============================================
-   SECTION 4: CHAT DEMO
-   ============================================ */
+
 .chat-demo-section {
     padding: 100px 24px;
     background: #030303;
@@ -172,12 +164,12 @@
 
 .iphone-mockup-2 {
     transform: none;
-    /* remove tilt for the second mockup */
+    
     height: 550px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: none;
-    /* fades out */
+    
 }
 
 .chat-demo-right {
@@ -192,9 +184,7 @@
     max-width: 500px;
 }
 
-/* ============================================
-   SECTION 5: COMMUNAUTÉ & TESTIMONIALS
-   ============================================ */
+
 .testimonials-section {
     padding: 120px 24px;
     background: #050505;
@@ -251,17 +241,13 @@
     font-size: 0.95rem;
 }
 
-/* ============================================
-   SECTION 6: VOICE MESSAGES
-   ============================================ */
+
 .voice-section {
     padding: 100px 24px;
     background: #080808;
 }
 
-/* ============================================
-   SECTION 7: ORB / DAILY
-   ============================================ */
+
 .orb-section {
     padding: 40px 24px 100px;
     background: #0a0a0a;
@@ -392,9 +378,7 @@
     right: 10%;
 }
 
-/* ============================================
-   SECTION 8: INTEGRATION
-   ============================================ */
+
 .integration-section {
     padding: 100px 24px;
     background: #000;
@@ -447,9 +431,7 @@
     line-height: 1.5;
 }
 
-/* ============================================
-   SECTION 9: DARKBOOK
-   ============================================ */
+
 .darkbook-section {
     position: relative;
     padding: 150px 24px;
@@ -463,12 +445,10 @@
     background-image: radial-gradient(circle at center, rgba(255, 0, 0, 0.1), transparent 50%);
     background-size: 100% 100%;
     opacity: 0.5;
-    /* Optional: add a pure CSS spiral/wheel animation if needed */
+    
 }
 
-/* ============================================
-   SECTION 10: PRE-FOOTER
-   ============================================ */
+
 .pre-footer-section {
     background: #000;
 }
@@ -494,9 +474,7 @@
     opacity: 0.5;
 }
 
-/* ============================================
-   TRUE FOOTER
-   ============================================ */
+
 .real-footer {
     padding: 40px 24px;
     background: #000;

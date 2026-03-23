@@ -1,7 +1,4 @@
-/* ============================================
-   ECLIPSEGPT - MAIN JAVASCRIPT
-   Scroll Reveal + Ember Particles + Smooth Scroll
-   ============================================ */
+
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
@@ -10,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
 });
 
-/* ---- Navbar scroll effect ---- */
 function initNavbar() {
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -22,7 +18,6 @@ function initNavbar() {
     });
 }
 
-/* ---- Scroll Reveal System ---- */
 function initScrollReveal() {
     const revealElements = document.querySelectorAll('[data-reveal]');
 
@@ -33,7 +28,7 @@ function initScrollReveal() {
                 setTimeout(() => {
                     entry.target.classList.add('revealed');
                 }, parseInt(delay));
-                observer.unobserve(entry.target); // Only animate once
+                observer.unobserve(entry.target); 
             }
         });
     }, {
@@ -44,7 +39,6 @@ function initScrollReveal() {
     revealElements.forEach(el => observer.observe(el));
 }
 
-/* ---- Ember / Fire Particles ---- */
 function initEmberParticles() {
     const canvas = document.getElementById('emberCanvas');
     if (!canvas) return;
@@ -60,7 +54,6 @@ function initEmberParticles() {
     resize();
     window.addEventListener('resize', resize);
 
-    // Recalculate canvas height periodically (for dynamic content)
     setInterval(resize, 3000);
 
     class Ember {
@@ -78,8 +71,8 @@ function initEmberParticles() {
             this.fadeSpeed = Math.random() * 0.003 + 0.001;
             this.wobble = Math.random() * Math.PI * 2;
             this.wobbleSpeed = Math.random() * 0.03 + 0.01;
-            // Color: random warm tone (red to orange to yellow)
-            const hue = Math.random() * 40 + 5; // 5-45 (red to orange)
+            
+            const hue = Math.random() * 40 + 5; 
             const sat = 90 + Math.random() * 10;
             const light = 45 + Math.random() * 20;
             this.color = `hsl(${hue}, ${sat}%, ${light}%)`;
@@ -100,7 +93,6 @@ function initEmberParticles() {
             ctx.save();
             ctx.globalAlpha = this.opacity;
 
-            // Glow effect
             ctx.shadowBlur = this.size * 4;
             ctx.shadowColor = this.color;
 
@@ -112,10 +104,9 @@ function initEmberParticles() {
         }
     }
 
-    // Create embers
     for (let i = 0; i < EMBER_COUNT; i++) {
         const e = new Ember();
-        e.y = Math.random() * canvas.height; // Spread across entire page initially
+        e.y = Math.random() * canvas.height; 
         embers.push(e);
     }
 
@@ -131,7 +122,6 @@ function initEmberParticles() {
     animate();
 }
 
-/* ---- Smooth Scroll ---- */
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

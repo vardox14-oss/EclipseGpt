@@ -1,7 +1,4 @@
-/* ============================================
-   ECLIPSEGPT - CHAT STYLES (Redesigned)
-   Matches original EclipseGPT chat interface
-   ============================================ */
+
 
 :root {
     --bg-primary: #0a0a0a;
@@ -63,7 +60,7 @@ button {
     color: inherit;
 }
 
-/* Scrollbar */
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -81,9 +78,7 @@ button {
     background: #3a3a40;
 }
 
-/* ============================================
-   SIDEBAR
-   ============================================ */
+
 .sidebar {
     width: 260px;
     height: 100vh;
@@ -135,7 +130,7 @@ button {
     background: var(--bg-hover);
 }
 
-/* New Chat Button */
+
 .new-chat-btn {
     display: flex;
     align-items: center;
@@ -155,7 +150,7 @@ button {
     box-shadow: 0 0 20px var(--accent-red-glow);
 }
 
-/* Sidebar Nav Button */
+
 .sidebar-nav-btn {
     display: flex;
     align-items: center;
@@ -174,7 +169,7 @@ button {
     color: var(--text-primary);
 }
 
-/* Search */
+
 .sidebar-search {
     display: flex;
     align-items: center;
@@ -201,7 +196,7 @@ button {
     color: var(--text-muted);
 }
 
-/* History */
+
 .sidebar-history {
     flex: 1;
     display: flex;
@@ -289,7 +284,7 @@ button {
     border-left: 2px solid var(--accent-red);
 }
 
-/* Sidebar Footer */
+
 .sidebar-footer {
     border-top: 1px solid var(--border-color);
     padding: 8px 12px;
@@ -311,9 +306,7 @@ button {
     color: var(--text-primary);
 }
 
-/* ============================================
-   MAIN CHAT AREA
-   ============================================ */
+
 .chat-main {
     flex: 1;
     display: flex;
@@ -323,14 +316,14 @@ button {
     background: var(--bg-primary);
     position: relative;
 
-    /* Dark grid background */
+    
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
     background-size: 50px 50px;
 }
 
-/* Red ambient glow (braze) - top */
+
 .chat-main::before {
     content: '';
     position: absolute;
@@ -345,7 +338,7 @@ button {
     animation: pulseGlow 6s ease-in-out infinite alternate;
 }
 
-/* Red ambient glow (braze) - bottom */
+
 .chat-main>.chat-input-area::before {
     content: '';
     position: absolute;
@@ -369,7 +362,7 @@ button {
     }
 }
 
-/* Top Bar */
+
 .chat-topbar {
     display: flex;
     align-items: center;
@@ -474,9 +467,7 @@ button {
     background: var(--bg-hover);
 }
 
-/* ============================================
-   CHAT MESSAGES
-   ============================================ */
+
 .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -486,7 +477,7 @@ button {
     z-index: 1;
 }
 
-/* Welcome Screen */
+
 .welcome-screen {
     display: flex;
     flex-direction: column;
@@ -503,7 +494,7 @@ button {
     letter-spacing: -0.5px;
 }
 
-/* Message Bubbles */
+
 .message {
     max-width: 800px;
     margin: 0 auto;
@@ -628,7 +619,7 @@ button {
     font-weight: 600;
 }
 
-/* Typing Indicator */
+
 .typing-indicator {
     display: flex;
     gap: 5px;
@@ -652,7 +643,7 @@ button {
     animation-delay: 0.4s;
 }
 
-/* Image Preview Area */
+
 .image-preview-area {
     max-width: 740px;
     margin: 0 auto 12px;
@@ -699,7 +690,7 @@ button {
     background: var(--accent-red);
 }
 
-/* Images in messages */
+
 .message-image {
     max-width: 100%;
     max-height: 300px;
@@ -731,9 +722,7 @@ button {
     }
 }
 
-/* ============================================
-   CHAT INPUT
-   ============================================ */
+
 .chat-input-area {
     padding: 0 24px 24px;
     flex-shrink: 0;
@@ -883,7 +872,7 @@ button {
     fill: none;
 }
 
-/* Premium Stop Button */
+
 .stop-btn {
     width: 36px;
     height: 36px;
@@ -891,7 +880,7 @@ button {
     color: white;
     border-radius: 50%;
     display: none;
-    /* Controlled by JS */
+    
     align-items: center;
     justify-content: center;
     transition: all var(--transition-normal);
@@ -908,7 +897,7 @@ button {
 
 .stop-btn rect {
     rx: 2px;
-    /* Smooth rounded square inside */
+    
 }
 
 @keyframes stopPulse {
@@ -925,9 +914,7 @@ button {
     }
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
+
 @media (max-width: 768px) {
     .sidebar {
         position: fixed;
@@ -954,9 +941,7 @@ button {
     }
 }
 
-/* ============================================
-   SHARE MODAL
-   ============================================ */
+
 .share-modal {
     display: none;
     position: fixed;
@@ -980,7 +965,7 @@ button {
     max-width: 90vw;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(229, 57, 53, 0.1);
     animation: modalIn 0.2s ease;
-    /* Ensure no margin/offset to keep it perfectly centered */
+    
     margin: auto;
 }
 
@@ -1090,9 +1075,7 @@ button {
     }
 }
 
-/* ============================================
-   SETTINGS MODAL
-   ============================================ */
+
 .settings-modal {
     display: none;
     position: fixed;
@@ -1340,7 +1323,7 @@ button {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Toggle Switch */
+
 .toggle-switch {
     position: relative;
     display: inline-block;
@@ -1397,9 +1380,7 @@ input:checked+.toggle-slider:before {
     font-size: 0.95rem;
 }
 
-/* ============================================
-   MODALS (2FA, Settings, etc.)
-   ============================================ */
+
 .modal-overlay {
     position: fixed;
     top: 0;

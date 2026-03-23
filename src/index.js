@@ -6,19 +6,14 @@ import { serveStatic } from 'hono/cloudflare-pages';
 
 const app = new Hono();
 
-// ============================================
-// SECURITY MIDDLEWARE
-// ============================================
-
 app.use('*', secureHeaders());
 
 app.use('*', cors({
-    origin: '*', // Adapt for production
+    origin: '*', 
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
 }));
 
-// IP Ban Check Middleware
 app.use('*', async (c, next) => {
     try {
         const ip = c.req.header('CF-Connecting-IP') || '127.0.0.1';
@@ -30,13 +25,11 @@ app.use('*', async (c, next) => {
     await next();
 });
 
-// Auth Middleware (Dual-layer: Discord -> License)
 async function getAuth(c) {
     const sessionSecret = c.env.SESSION_SECRET || 'secret';
     let discordUser = null;
     let licenseToken = await getSignedCookie(c, sessionSecret, 'eclipsegpt_license');
-    
-    // Check Discord
+
     try {
         const dCookie = await getSignedCookie(c, sessionSecret, 'eclipsegpt_discord_user');
         if (dCookie) {
@@ -69,10 +62,6 @@ async function getAuth(c) {
     return { discordUser, licenseToken, licenseValid, error };
 }
 
-// ============================================
-// DISCORD OAUTH2
-// ============================================
-
 app.get('/auth/discord', async (c) => {
     const client_id = c.env.DISCORD_CLIENT_ID;
     const redirect_uri = encodeURIComponent(c.env.DISCORD_REDIRECT_URI);
@@ -101,7 +90,6 @@ app.get('/auth/discord/callback', async (c) => {
         if (!tokenResponse.ok) return c.redirect('/login.html?error=token_failed');
         const tokenData = await tokenResponse.json();
 
-        // Get User Profile
         const userResponse = await fetch('https://discord.com/api/users/@me', {
             headers: { 'Authorization': `Bearer ${tokenData.access_token}` }
         });
@@ -118,7 +106,6 @@ app.get('/auth/discord/callback', async (c) => {
             avatar: avatarUrl
         };
 
-        // Insert/Update into D1 SQLite
         await c.env.DB.prepare('INSERT OR REPLACE INTO users (discord_id, username, avatar) VALUES (?, ?, ?)')
              .bind(userData.id, userData.username, avatarUrl).run();
 
@@ -127,20 +114,16 @@ app.get('/auth/discord/callback', async (c) => {
             httpOnly: true, secure: true, sameSite: 'Lax', maxAge: 365 * 24 * 60 * 60
         });
 
-        return c.redirect('/login.html'); // Will prompt for key or auto log in if they have a saved key
+        return c.redirect('/login.html'); 
     } catch (err) {
         console.error('Discord Auth Error:', err);
         return c.text(`DÉBOGAGE (SERVER ERROR) : \nMessage: ${err.message}\nStack: ${err.stack}`, 500);
     }
 });
 
-// ============================================
-// SESSION / LOGIN
-// ============================================
-
 app.get('/api/session', async (c) => {
     const auth = await getAuth(c);
-    // Provide state back to frontend so it knows whether discord is logged or if key is logged.
+    
     return c.json({
         discordLogged: !!auth.discordUser,
         discordUser: auth.discordUser,
@@ -152,7 +135,7 @@ app.get('/api/session', async (c) => {
 
 app.post('/api/auth/license', async (c) => {
     const auth = await getAuth(c);
-    // User must be connected via Discord first
+    
     if (!auth.discordUser) return c.json({ error: 'Tu dois te connecter avec Discord avant d\'entrer une clé.' }, 401);
 
     const body = await c.req.json().catch(() => ({}));
@@ -183,7 +166,6 @@ app.post('/api/auth/license', async (c) => {
     return c.json({ success: true, message: 'Authentification réussie.' });
 });
 
-// Logout
 app.post('/api/logout', async (c) => {
     deleteCookie(c, 'eclipsegpt_license');
     deleteCookie(c, 'eclipsegpt_discord_user');
@@ -191,13 +173,9 @@ app.post('/api/logout', async (c) => {
     return c.json({ success: true });
 });
 
-// ============================================
-// ADMIN PANEL ENDPOINTS
-// ============================================
-
 async function adminMiddleware(c, next) {
     const auth = await getAuth(c);
-    // STRICT VERIFICATION for User 'vardox58'
+    
     if (auth.discordUser && auth.discordUser.username === 'vardox58') {
         await next();
     } else {
@@ -205,8 +183,6 @@ async function adminMiddleware(c, next) {
     }
 }
 
-// Endpoint kept for retro-compatibility of the UI, but it's not strictly necessary. 
-// Just returns true if adminMiddleware passes.
 app.post('/api/admin/login', adminMiddleware, (c) => c.json({ success: true }));
 
 app.get('/api/admin/verify', adminMiddleware, (c) => c.json({ success: true }));
@@ -215,8 +191,7 @@ app.post('/api/admin/keys', adminMiddleware, async (c) => {
     const { duration_days, count = 1 } = await c.req.json().catch(() => ({}));
     const duration = parseInt(duration_days) || 0;
     const generated = [];
-    
-    // Batch statements for D1
+
     const stmts = [];
     for (let i = 0; i < count; i++) {
         const rand = crypto.randomUUID().split('-')[0].toUpperCase();
@@ -264,10 +239,6 @@ app.get('/api/admin/conversations/:id/messages', adminMiddleware, async (c) => {
     const msgs = await c.env.DB.prepare('SELECT * FROM messages WHERE conversation_id = ? ORDER BY created_at ASC').bind(c.req.param('id')).all();
     return c.json(msgs.results);
 });
-
-// ============================================
-// CHAT & SCRAPING ROUTE
-// ============================================
 
 function extractUrls(text) {
     if (typeof text !== 'string') return [];
@@ -364,7 +335,7 @@ app.post('/api/chat', async (c) => {
     const writer = writable.getWriter();
 
     c.executionCtx.waitUntil((async () => {
-        // ERROR HANDLING IF AI API FAILS (Fixes empty bubbles)
+        
         if (!response.ok) {
             const errText = await response.text();
             let safeErr = errText;
@@ -374,8 +345,7 @@ app.post('/api/chat', async (c) => {
             } catch(e) {}
             
             const generatedErr = `**[Erreur API de l'IA]** Impossible de générer la réponse. (Statut ${response.status})\n\`\`\`json\n${safeErr}\n\`\`\``;
-            
-            // Format fake SSE chunks for the frontend to render the error visually
+
             const mockSSE = `data: {"choices":[{"delta":{"content":${JSON.stringify(generatedErr)}}}]}\n\n`;
             await writer.write(new TextEncoder().encode(mockSSE));
             await writer.write(new TextEncoder().encode('data: [DONE]\n\n'));
@@ -418,7 +388,6 @@ app.post('/api/chat', async (c) => {
     });
 });
 
-// Serve frontend static assets (HTML, CSS, JS) from Cloudflare Pages
 app.get('/*', serveStatic());
 
 export default app;

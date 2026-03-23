@@ -1,10 +1,7 @@
-/* ============================================
-   ECLIPSEGPT - CHAT JAVASCRIPT (Redesigned)
-   ============================================ */
+
 
 const API_URL = '/api/chat';
 
-// State
 let userEmail = localStorage.getItem('eclipsegpt_user_email') || 'default';
 let currentUsername = 'Utilisateur';
 const storageKey = `eclipsegpt_conversations_${userEmail}`;
@@ -14,7 +11,6 @@ let isGenerating = false;
 let currentImageBase64 = null;
 let abortController = null;
 
-// DOM Elements
 const chatMessages = document.getElementById('chatMessages');
 const chatInput = document.getElementById('chatInput');
 const sendBtn = document.getElementById('sendBtn');
@@ -33,7 +29,6 @@ const attachBtn = document.getElementById('attachBtn');
 const imagePreviewArea = document.getElementById('imagePreviewArea');
 const stopBtn = document.getElementById('stopBtn');
 
-// Init
 document.addEventListener('DOMContentLoaded', () => {
     renderConversations();
     setupEventListeners();
@@ -46,7 +41,6 @@ function setupEventListeners() {
     const nameDisplay = document.getElementById('userProfileNameDisplay');
     const avatarDisplay = document.getElementById('userProfileAvatar');
 
-    // Fetch session data (Discord OAuth2)
     fetch('/api/session', { credentials: 'include' })
         .then(r => r.json())
         .then(data => {
@@ -63,13 +57,12 @@ function setupEventListeners() {
                 localStorage.setItem('eclipsegpt_user_username', currentUsername);
                 if (data.discordUser.avatar) localStorage.setItem('eclipsegpt_user_avatar', data.discordUser.avatar);
 
-                // Refresh typewriter if on welcome screen to show actual name
                 const titleElement = document.querySelector('.welcome-title');
                 if (titleElement && !currentConvId) {
                     startTypewriter();
                 }
             } else {
-                // Not authenticated or missing license, redirect to login
+                
                 window.location.href = 'login.html';
             }
         }).catch(err => console.error('Erreur session:', err));
@@ -93,7 +86,6 @@ function setupEventListeners() {
         sidebar.classList.toggle('open');
     });
 
-    // ... existing logout code ...
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async (e) => {
@@ -104,7 +96,6 @@ function setupEventListeners() {
         });
     }
 
-    // --- 2FA Setup Logic ---
     const setup2faBtns = document.querySelectorAll('#setup2faBtn1, #setup2faBtn2');
     if (setup2faBtns.length > 0) {
         setup2faBtns.forEach(btn => btn.addEventListener('click', (e) => {
@@ -141,14 +132,12 @@ function setupEventListeners() {
         });
     }
 
-    // Action buttons toggle (mic, web search, chat)
     document.querySelectorAll('.input-action-btn:not(.attach-btn)').forEach(btn => {
         btn.addEventListener('click', () => {
             btn.classList.toggle('active');
         });
     });
 
-    // Attach button (file upload)
     if (attachBtn && imageInput) {
         attachBtn.addEventListener('click', () => {
             imageInput.click();
@@ -167,7 +156,6 @@ function setupEventListeners() {
         });
     }
 
-    // Share modal
     const shareBtn = document.getElementById('shareBtn');
     const shareModal = document.getElementById('shareModal');
     const shareModalClose = document.getElementById('shareModalClose');
@@ -250,7 +238,6 @@ function setupEventListeners() {
         });
     }
 
-    // Options menu (three dots) — delete conversation
     const optionsBtn = document.getElementById('optionsBtn');
     if (optionsBtn) {
         optionsBtn.addEventListener('click', () => {
@@ -268,7 +255,6 @@ function setupEventListeners() {
         });
     }
 
-    // Applications, Abonnement, Paramètres
     const applicationsBtn = document.getElementById('applicationsBtn');
     if (applicationsBtn) {
         applicationsBtn.addEventListener('click', () => {
@@ -311,36 +297,32 @@ function setupEventListeners() {
         });
     }
 
-    // Tab switching logic
     settingsTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // Remove active class from all tabs
+            
             settingsTabs.forEach(t => t.classList.remove('active'));
-            // Remove active class from all panes
+            
             settingsPanes.forEach(p => p.classList.remove('active'));
 
-            // Add active class to clicked tab
             tab.classList.add('active');
 
-            // Find corresponding pane and activate it
             const targetId = tab.dataset.tab;
             const targetPane = document.getElementById(`pane-${targetId}`);
 
             if (targetPane) {
                 targetPane.classList.add('active');
             } else {
-                // If specific pane doesn't exist yet, show the "other" placeholder pane
+                
                 const otherPane = document.getElementById('pane-other');
                 if (otherPane) otherPane.classList.add('active');
             }
         });
     });
 
-    // Specific settings functions
     const deleteAllChatsBtn = document.getElementById('settingsDeleteAllChats');
     if (deleteAllChatsBtn) {
         deleteAllChatsBtn.addEventListener('click', () => {
-            // Using a custom built-in confirm replacing window.confirm
+            
             const isConfirmed = window.confirm('Attention : Êtes-vous sûr de vouloir supprimer TOUT l\'historique de vos conversations ?');
             if (isConfirmed) {
                 conversations = [];
@@ -354,7 +336,6 @@ function setupEventListeners() {
         });
     }
 
-    // Clear Memory
     const clearMemoryBtn = document.getElementById('settingsClearMemory');
     if (clearMemoryBtn) {
         clearMemoryBtn.addEventListener('click', () => {
@@ -370,7 +351,6 @@ function setupEventListeners() {
         });
     }
 
-    // Export Data
     const exportDataBtn = document.getElementById('settingsExportData');
     if (exportDataBtn) {
         exportDataBtn.addEventListener('click', () => {
@@ -385,7 +365,6 @@ function setupEventListeners() {
         });
     }
 
-    // Logout All
     const logoutAllBtn = document.getElementById('settingsLogoutAll');
     if (logoutAllBtn) {
         logoutAllBtn.addEventListener('click', async () => {
@@ -396,7 +375,6 @@ function setupEventListeners() {
         });
     }
 
-    // Delete Account Params
     const deleteAccountBtn = document.getElementById('settingsDeleteAccountParams');
     if (deleteAccountBtn) {
         deleteAccountBtn.addEventListener('click', async () => {
@@ -414,7 +392,6 @@ function setupEventListeners() {
         });
     }
 
-    // Generic Toast Actions
     const toastActionBtns = document.querySelectorAll('.settings-action-btn[data-action="toast"]');
     toastActionBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -423,10 +400,9 @@ function setupEventListeners() {
         });
     });
 
-    // Handle Selects
     const selects = document.querySelectorAll('.settings-select');
     if (selects.length >= 2) {
-        // Init Themes from LS
+        
         const savedTheme = localStorage.getItem('eclipsegpt_theme') || 'Système';
         selects[0].value = savedTheme;
         applyTheme(savedTheme);
@@ -435,10 +411,9 @@ function setupEventListeners() {
         selects[1].value = savedAccent;
         applyAccent(savedAccent);
 
-        // Voice (index 4 is voice select)
         if (selects.length >= 4) {
             const savedVoice = localStorage.getItem('eclipsegpt_voice') || 'Arbor';
-            // We assume index 3 or 4 is voice select, but safely iterate
+            
             Array.from(selects).forEach(sel => {
                 if (sel.options && sel.options[0] && sel.options[0].value === 'Arbor') {
                     sel.value = savedVoice;
@@ -450,7 +425,6 @@ function setupEventListeners() {
             });
         }
 
-        // Theme Change Event
         selects[0].addEventListener('change', (e) => {
             const val = e.target.value;
             localStorage.setItem('eclipsegpt_theme', val);
@@ -458,7 +432,6 @@ function setupEventListeners() {
             showToast('Thème mis à jour : ' + val);
         });
 
-        // Accent Color Change Event
         selects[1].addEventListener('change', (e) => {
             const val = e.target.value;
             localStorage.setItem('eclipsegpt_accent', val);
@@ -485,19 +458,16 @@ function setupEventListeners() {
         }
     }
 
-    // Interactive Toggles with LocalStorage Persistence
     const toggles = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
     toggles.forEach(toggle => {
         const id = toggle.id || 'toggle_' + Math.random().toString(36).substr(2, 9);
         if (!toggle.id) toggle.id = id;
 
-        // Load state
         const savedState = localStorage.getItem(`eclipsegpt_${id}`);
         if (savedState !== null) {
             toggle.checked = savedState === 'true';
         }
 
-        // Save state on change
         toggle.addEventListener('change', () => {
             localStorage.setItem(`eclipsegpt_${id}`, toggle.checked);
             if (id === 'toggleMemory' && !toggle.checked) showToast('La mémoire contextuelle est désactivée.');
@@ -521,7 +491,6 @@ function setupEventListeners() {
     });
 }
 
-// Custom Toast Notification System
 function showToast(message, isError = false) {
     let globalToast = document.getElementById('globalToast');
 
@@ -543,7 +512,6 @@ function showToast(message, isError = false) {
         document.body.appendChild(globalToast);
     }
 
-    // Set styles based on type
     if (isError) {
         globalToast.style.background = 'rgba(229, 57, 53, 0.15)';
         globalToast.style.border = '1px solid rgba(229, 57, 53, 0.4)';
@@ -559,7 +527,7 @@ function showToast(message, isError = false) {
     globalToast.textContent = message;
 
     globalToast.style.display = 'block';
-    // Trigger layout for animation
+    
     globalToast.offsetHeight;
     globalToast.style.opacity = '1';
     globalToast.style.transform = 'translateX(-50%) translateY(0)';
@@ -584,7 +552,6 @@ function autoResizeTextarea() {
     });
 }
 
-/* ---- Conversation Management ---- */
 function createConversation(firstMessage) {
     const conv = {
         id: Date.now().toString(),
@@ -601,7 +568,7 @@ function saveConversations() {
     const saveHistory = localStorage.getItem('eclipsegpt_toggleHistory') !== 'false';
     if (saveHistory) {
         try {
-            // Strip huge base64 payloads to avoid Quota Exceeded Exception
+            
             const minimizedConversations = conversations.map(conv => ({
                 ...conv,
                 messages: conv.messages.map(msg => {
@@ -632,7 +599,7 @@ function getConversation(id) {
 }
 
 function renderConversations() {
-    // Clear existing items but keep emptyHistory template
+    
     const items = conversationList.querySelectorAll('.conv-item');
     items.forEach(i => i.remove());
 
@@ -654,7 +621,6 @@ function renderConversations() {
     }
 }
 
-/* ---- Chat Rendering ---- */
 let typewriterTimeout = null;
 
 function startTypewriter() {
@@ -674,7 +640,7 @@ function startTypewriter() {
 
     function type() {
         const activeTitle = document.querySelector('.welcome-title');
-        if (!activeTitle) return; // Stop if element is gone
+        if (!activeTitle) return; 
 
         const currentPhrase = phrases[phraseIndex];
 
@@ -689,7 +655,7 @@ function startTypewriter() {
         let speed = isDeleting ? 40 : 80;
 
         if (!isDeleting && charIndex === currentPhrase.length) {
-            speed = 2500; // Longer pause at the end of phrase
+            speed = 2500; 
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
@@ -728,7 +694,7 @@ function renderChat() {
 }
 
 function appendMessage(role, content, animate = true) {
-    // Remove welcome screen
+    
     const ws = chatMessages.querySelector('.welcome-screen');
     if (ws) ws.remove();
 
@@ -830,7 +796,7 @@ function formatMessage(content) {
         .split('\n\n').map(p => `<p>${p}</p>`).join('');
 
     html = html.replace(/\n/g, '<br>');
-    // XSS Protection — Sanitize HTML output
+    
     if (typeof DOMPurify !== 'undefined') {
         html = DOMPurify.sanitize(html, { ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'code', 'pre', 'a'], ALLOWED_ATTR: ['href'] });
     }
@@ -838,7 +804,7 @@ function formatMessage(content) {
 }
 
 function scrollToBottom(force = false) {
-    const threshold = 150; // Seuil de pixels depuis le bas
+    const threshold = 150; 
     const isAtBottom = chatMessages.scrollHeight - chatMessages.scrollTop - chatMessages.clientHeight < threshold;
 
     if (force || isAtBottom) {
@@ -849,7 +815,6 @@ function scrollToBottom(force = false) {
     }
 }
 
-/* ---- Send Message & API ---- */
 async function handleSend() {
     const text = chatInput.value.trim();
     if (!text && !currentImageBase64 || isGenerating) return;
@@ -882,7 +847,6 @@ async function handleSend() {
 
     appendTypingIndicator();
 
-    // Abort Controller Setup
     abortController = new AbortController();
     const signal = abortController.signal;
 
@@ -927,13 +891,11 @@ async function handleSend() {
 
             const chunk = decoder.decode(value, { stream: true });
 
-            // On traite chaque ligne du chunk
             const lines = chunk.split('\n');
             for (let line of lines) {
                 line = line.trim();
                 if (!line) continue;
 
-                // Support du format standard SSE "data: ..."
                 let rawData = line;
                 if (line.startsWith('data: ')) {
                     rawData = line.slice(6);
@@ -943,7 +905,7 @@ async function handleSend() {
 
                 try {
                     const parsed = JSON.parse(rawData);
-                    // On cherche le contenu dans différents endroits possibles selon le modèle
+                    
                     const content =
                         parsed.choices?.[0]?.delta?.content ||
                         parsed.choices?.[0]?.delta?.reasoning_content ||
@@ -957,8 +919,7 @@ async function handleSend() {
                         scrollToBottom(false);
                     }
                 } catch (e) {
-                    // Si on n'arrive pas à parser du JSON, on essaie de voir si la ligne contient du JSON
-                    // (certains modèles/proxys envoient des trucs bizarres)
+
                     const jsonMatch = rawData.match(/\{.*\}/);
                     if (jsonMatch) {
                         try {
@@ -970,8 +931,7 @@ async function handleSend() {
                                 scrollToBottom(false);
                             }
                         } catch (e2) {
-                            // En dernier recours, si ce n'est pas du JSON du tout, on ignore ou on traite comme du texte si c'est propre
-                            // On évite d'ajouter du JSON brut (qui commence par {)
+
                             if (!rawData.startsWith('{')) {
                                 assistantText += rawData;
                                 textEl.innerHTML = formatMessage(assistantText);

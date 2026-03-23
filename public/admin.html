@@ -9,7 +9,6 @@
 </head>
 <body>
 
-    <!-- UNAUTHORIZED MODAL -->
     <div id="unauthorizedOverlay" class="overlay active">
         <div class="login-box" style="text-align: center;">
             <img src="logo.jpg" alt="EclipseGPT" class="login-logo" style="margin: 0 auto 1.5rem auto; display: block;">
@@ -19,9 +18,8 @@
         </div>
     </div>
 
-    <!-- MAIN LAYOUT -->
     <div class="admin-layout">
-        <!-- SIDEBAR -->
+        
         <aside class="sidebar">
             <div class="sidebar-header">
                 <img src="logo.jpg" alt="Logo">
@@ -36,10 +34,8 @@
             </nav>
         </aside>
 
-        <!-- MAIN CONTENT -->
         <main class="main-content">
-            
-            <!-- SECTION: Dashboard -->
+
             <section id="dashboard" class="admin-section active">
                 <header class="section-header">
                     <h1>Vue d'ensemble</h1>
@@ -61,7 +57,6 @@
                 </div>
             </section>
 
-            <!-- SECTION: Keys -->
             <section id="keys" class="admin-section">
                 <header class="section-header">
                     <h1>Gestion des Clés de Licence</h1>
@@ -80,13 +75,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Populated via JS -->
+                            
                         </tbody>
                     </table>
                 </div>
             </section>
 
-            <!-- SECTION: Conversations -->
             <section id="conversations" class="admin-section">
                 <header class="section-header">
                     <h1>Surveillance des Conversations</h1>
@@ -103,13 +97,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Populated via JS -->
+                            
                         </tbody>
                     </table>
                 </div>
             </section>
 
-            <!-- SECTION: Bans -->
             <section id="bans" class="admin-section">
                 <header class="section-header">
                     <h1>Adresses IP Bannies</h1>
@@ -130,7 +123,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Populated via JS -->
+                            
                         </tbody>
                     </table>
                 </div>
@@ -139,7 +132,6 @@
         </main>
     </div>
 
-    <!-- MODAL: Generate Key -->
     <div id="generateModal" class="overlay">
         <div class="modal-box">
             <h2>Générer des Clés</h2>
@@ -163,7 +155,6 @@
         </div>
     </div>
 
-    <!-- MODAL: View Chat -->
     <div id="viewChatModal" class="overlay">
         <div class="modal-box chat-modal">
             <div class="chat-header">
@@ -171,13 +162,12 @@
                 <button id="closeChatModal" class="close-btn">×</button>
             </div>
             <div id="chatViewMessages" class="chat-messages-container">
-                <!-- Messages populated via JS -->
+                
                 <div class="loading-spinner">Chargement...</div>
             </div>
         </div>
     </div>
 
-    <!-- TOAST NOTIFICATIONS -->
     <div id="toastContainer"></div>
 
     <script src="admin.js"></script>

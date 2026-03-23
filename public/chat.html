@@ -12,7 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="chat.css">
     <script>
-        // Authentication Guard — Server-side session check
+        
         fetch('/api/session', { credentials: 'include' })
             .then(r => r.json())
             .then(data => {
@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <!-- SIDEBAR -->
+    
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-top">
             <div class="sidebar-header">
@@ -116,9 +116,8 @@
         </div>
     </aside>
 
-    <!-- MAIN CHAT AREA -->
     <main class="chat-main" id="chatMain">
-        <!-- Top Bar -->
+        
         <div class="chat-topbar">
             <button class="sidebar-toggle" id="sidebarToggle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
@@ -152,7 +151,6 @@
                     </svg>
                 </button>
 
-                <!-- Share Modal -->
                 <div class="share-modal" id="shareModal">
                     <div class="share-modal-box">
                         <div class="share-modal-header">
@@ -193,7 +191,6 @@
                     </div>
                 </div>
 
-                <!-- Settings Modal -->
                 <div class="settings-modal" id="settingsModal">
                     <div class="settings-modal-box">
                         <button class="settings-modal-close" id="settingsModalClose">
@@ -519,14 +516,12 @@
             </div>
         </div>
 
-        <!-- Chat Messages -->
         <div class="chat-messages" id="chatMessages">
             <div class="welcome-screen" id="welcomeScreen">
                 <h1 class="welcome-title"></h1>
             </div>
         </div>
 
-        <!-- Chat Input -->
         <div class="chat-input-area">
             <div id="imagePreviewArea" class="image-preview-area" style="display: none;"></div>
             <div class="chat-input-wrapper">
@@ -580,7 +575,6 @@
         </div>
     </main>
 
-    <!-- Modale 2FA -->
     <div class="modal-overlay" id="twoFaModal">
         <div class="modal">
             <div class="modal-header">

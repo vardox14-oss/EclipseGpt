@@ -3,19 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const licenseSection = document.getElementById('licenseSection');
     const userAvatar = document.getElementById('userAvatar');
     const welcomeUsername = document.getElementById('welcomeUsername');
-    
-    // Check session status
+
     fetch('/api/session', { credentials: 'include' })
         .then(r => r.json())
         .then(data => {
             if (data.discordLogged && data.licenseValid) {
-                // Fully authenticated
+                
                 window.location.href = 'chat.html';
                 return;
             }
 
             if (data.discordLogged && !data.licenseValid) {
-                // Discord is connected, but needs license key
+                
                 discordSection.classList.add('hidden');
                 licenseSection.classList.remove('hidden');
 
@@ -25,14 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     welcomeUsername.innerText = `Bienvenue, ${data.discordUser.username}`;
                 }
             } else {
-                // Not even Discord is connected
+                
                 discordSection.classList.remove('hidden');
                 licenseSection.classList.add('hidden');
             }
         })
         .catch(() => { });
 
-    // Handle Key Authentication
     const loginBtn = document.getElementById('licenseLoginBtn');
     const licenseInput = document.getElementById('licenseInput');
     const errObj = document.getElementById('loginErrorMessage');
@@ -78,12 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle Discord callback errors
     const params = new URLSearchParams(window.location.search);
     const error = params.get('error');
     if (error) {
         window.history.replaceState({}, '', '/login.html');
-        // Handle Toast notification
+        
         let toast = document.getElementById('authToast');
         if (!toast) {
             toast = document.createElement('div');

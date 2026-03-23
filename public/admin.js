@@ -18,16 +18,13 @@ const API = {
     }
 };
 
-// State
 let allConversations = [];
 
-// DOM
 const unauthorizedOverlay = document.getElementById('unauthorizedOverlay');
 
 const navItems = document.querySelectorAll('.nav-item[data-target]');
 const sections = document.querySelectorAll('.admin-section');
 
-// Init
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         await API.call('/api/admin/verify');
@@ -42,7 +39,6 @@ function showUnauthorizedModal() {
     unauthorizedOverlay.classList.add('active');
 }
 
-// Navigation
 navItems.forEach(item => {
     item.addEventListener('click', () => {
         navItems.forEach(n => n.classList.remove('active'));
@@ -52,7 +48,6 @@ navItems.forEach(item => {
     });
 });
 
-// Loaders
 async function loadAllData() {
     loadKeys();
     loadBans();
@@ -124,7 +119,6 @@ async function loadConversations() {
     } catch(e) { console.error(e); }
 }
 
-// Actions
 async function updateKeyStatus(key, status) {
     try {
         await API.call(`/api/admin/keys/${key}/status`, 'PUT', { status });
@@ -154,7 +148,6 @@ document.getElementById('banSubmitBtn').addEventListener('click', async () => {
     } catch(e) { showToast(e.message); }
 });
 
-// Modals
 const generateModal = document.getElementById('generateModal');
 document.getElementById('openGenerateModal').onclick = () => generateModal.classList.add('active');
 document.getElementById('closeGenerateModal').onclick = () => generateModal.classList.remove('active');
@@ -170,7 +163,6 @@ document.getElementById('submitGenerateKey').addEventListener('click', async () 
     } catch(e) { showToast(e.message); }
 });
 
-// Chat Viewing
 const viewChatModal = document.getElementById('viewChatModal');
 const chatMsgsContainer = document.getElementById('chatViewMessages');
 
@@ -192,8 +184,7 @@ async function viewChat(id, title) {
         messages.forEach(m => {
             const div = document.createElement('div');
             div.className = `chat-msg ${m.role}`;
-            
-            // Format content if it contains markdown or HTML
+
             let safeContent = m.content.replace(/</g, '<').replace(/>/g, '>');
             
             div.innerHTML = `<div class="chat-bubble">${safeContent}</div>`;
@@ -205,7 +196,6 @@ async function viewChat(id, title) {
     }
 }
 
-// Toast
 function showToast(msg) {
     const container = document.getElementById('toastContainer');
     const toast = document.createElement('div');

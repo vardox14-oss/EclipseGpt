@@ -24,7 +24,7 @@ body {
     overflow: hidden;
 }
 
-/* Typography & Utils */
+
 h1 { font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 600; color: #fff; }
 p { font-size: 0.9rem; color: var(--text-muted); }
 .btn-primary, .btn-danger, .btn-secondary {
@@ -38,7 +38,7 @@ p { font-size: 0.9rem; color: var(--text-muted); }
 .btn-secondary { background: #333; }
 .btn-secondary:hover { background: #444; }
 
-/* Overlay (Modals) */
+
 .overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
     display: none; align-items: center; justify-content: center; z-index: 1000;
@@ -61,10 +61,10 @@ p { font-size: 0.9rem; color: var(--text-muted); }
 .login-box button { width: 100%; padding: 0.8rem; font-size: 1rem; }
 .error-msg { color: var(--danger-color); font-size: 0.85rem; margin-top: 1rem; min-height: 1rem;}
 
-/* Layout */
+
 .admin-layout { display: flex; width: 100%; height: 100%; }
 
-/* Sidebar */
+
 .sidebar {
     width: 250px; background: var(--sidebar-bg); border-right: 1px solid var(--border-color);
     display: flex; flex-direction: column; padding: 1.5rem 1rem;
@@ -83,7 +83,7 @@ p { font-size: 0.9rem; color: var(--text-muted); }
 .back-link { margin-top: auto; color: #888; display: block; border: 1px solid #333;}
 .back-link:hover { background: #222; }
 
-/* Main Content */
+
 .main-content {
     flex: 1; padding: 2rem 3rem; overflow-y: auto; background: var(--bg-color);
 }
@@ -95,7 +95,7 @@ p { font-size: 0.9rem; color: var(--text-muted); }
 .ban-form { display: flex; gap: 1rem; align-items: center; }
 .ban-form input { margin-bottom: 0; width: 200px;}
 
-/* Stats */
+
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
 .stat-card {
     background: var(--panel-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);
@@ -104,7 +104,7 @@ p { font-size: 0.9rem; color: var(--text-muted); }
 .stat-card h4 { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;}
 .stat-card .stat-value { font-size: 2.5rem; font-weight: 700; color: #fff; }
 
-/* Tables */
+
 .table-container { background: var(--panel-bg); border-radius: 12px; border: 1px solid var(--border-color); overflow: hidden; }
 table { width: 100%; border-collapse: collapse; text-align: left; }
 th, td { padding: 1rem; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
@@ -117,7 +117,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .badge.expired { background: rgba(255,255,255,0.1); color: #888; border: 1px solid rgba(255,255,255,0.2); }
 .badge.banned { background: rgba(217, 4, 41, 0.1); color: var(--danger-color); border: 1px solid rgba(217, 4, 41, 0.3); }
 
-/* Keys Table specific */
+
 .key-copy { font-family: monospace; background: #000; padding: 0.3rem 0.5rem; border-radius: 4px; cursor: pointer; color: var(--primary-color);}
 .key-copy:hover { background: #111; color: #fff; }
 
@@ -125,7 +125,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .action-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
 .action-btn.delete:hover { background: rgba(217,4,41,0.1); color: var(--danger-color); }
 
-/* Modals Details */
+
 .form-group { text-align: left; margin-bottom: 1rem; }
 .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
 .modal-actions { display: flex; gap: 1rem; margin-top: 2rem; }
@@ -142,7 +142,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .chat-msg.user .chat-bubble { background: #333; color: #fff; border-bottom-right-radius: 2px;}
 .chat-msg.assistant .chat-bubble { background: var(--panel-bg); color: #f1f1f1; border: 1px solid var(--border-color); border-bottom-left-radius: 2px;}
 
-/* Toast */
+
 #toastContainer { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 9999; }
 .toast { background: #222; color: #fff; padding: 1rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); animation: slideInRight 0.3s ease forwards; }
 @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }

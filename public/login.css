@@ -44,7 +44,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Auth Container */
+
 .login-container {
     width: 100%;
     max-width: 440px;
@@ -110,7 +110,7 @@ a:hover {
     line-height: 1.4;
 }
 
-/* Discord Button */
+
 .discord-btn {
     display: flex;
     align-items: center;
@@ -147,7 +147,7 @@ a:hover {
     flex-shrink: 0;
 }
 
-/* Footer */
+
 .login-footer {
     text-align: center;
     margin-top: 2rem;
@@ -159,7 +159,7 @@ a:hover {
     font-weight: 600;
 }
 
-/* Toast */
+
 #authToast {
     position: fixed;
     bottom: 30px;
