@@ -459,9 +459,6 @@ function setupEventListeners() {
         else if (val === 'Orange Hacking') hex = '#f97316';
         document.documentElement.style.setProperty('--accent-red', hex);
         document.documentElement.style.setProperty('--accent-red-bright', hex);
-    } else {
-            document.documentElement.style.setProperty('--accent-red', '#e53935');
-        }
     }
 
     const toggles = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
