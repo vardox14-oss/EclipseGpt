@@ -407,7 +407,7 @@ function setupEventListeners() {
         selects[0].value = savedTheme;
         applyTheme(savedTheme);
 
-        const savedAccent = localStorage.getItem('eclipsegpt_accent') || 'Rouge EclipseGPT';
+        const savedAccent = localStorage.getItem('eclipsegpt_accent') || 'Par défaut (Rouge)';
         selects[1].value = savedAccent;
         applyAccent(savedAccent);
 
@@ -451,8 +451,9 @@ function setupEventListeners() {
     }
 
     function applyAccent(val) {
-        let hex = '#e53935';
-        if (val === 'Par défaut (Bleu)') hex = '#3b82f6';
+        let hex = '#e53935'; // Absolute default is red
+        if (val === 'Bleu Classique') hex = '#3b82f6';
+        else if (val === 'Par défaut (Rouge)') hex = '#e53935';
         else if (val === 'Rouge EclipseGPT') hex = '#e53935';
         else if (val === 'Vert Cyber') hex = '#10b981';
         else if (val === 'Violet Fluo') hex = '#8b5cf6';
