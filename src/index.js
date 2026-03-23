@@ -129,7 +129,8 @@ app.get('/auth/discord/callback', async (c) => {
 
         return c.redirect('/login.html'); // Will prompt for key or auto log in if they have a saved key
     } catch (err) {
-        return c.redirect('/login.html?error=server_error');
+        console.error('Discord Auth Error:', err);
+        return c.text(`DÉBOGAGE (SERVER ERROR) : \nMessage: ${err.message}\nStack: ${err.stack}`, 500);
     }
 });
 
