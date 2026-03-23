@@ -885,13 +885,19 @@ async function handleSend() {
         const assistantMsg = appendMessage('assistant', '');
         const textEl = assistantMsg.querySelector('.message-text');
 
+        let lastRenderTime = 0;
         while (true) {
             const { done, value } = await reader.read();
-            if (done) break;
+            if (done) {
+                textEl.innerHTML = formatMessage(assistantText);
+                scrollToBottom(false);
+                break;
+            }
 
             const chunk = decoder.decode(value, { stream: true });
 
             const lines = chunk.split('\n');
+            let newlyAddedText = false;
             for (let line of lines) {
                 line = line.trim();
                 if (!line) continue;
@@ -915,11 +921,9 @@ async function handleSend() {
 
                     if (content) {
                         assistantText += content;
-                        textEl.innerHTML = formatMessage(assistantText);
-                        scrollToBottom(false);
+                        newlyAddedText = true;
                     }
                 } catch (e) {
-
                     const jsonMatch = rawData.match(/\{.*\}/);
                     if (jsonMatch) {
                         try {
@@ -927,19 +931,24 @@ async function handleSend() {
                             const content = parsed.choices?.[0]?.delta?.content || parsed.content || '';
                             if (content) {
                                 assistantText += content;
-                                textEl.innerHTML = formatMessage(assistantText);
-                                scrollToBottom(false);
+                                newlyAddedText = true;
                             }
                         } catch (e2) {
-
                             if (!rawData.startsWith('{')) {
                                 assistantText += rawData;
-                                textEl.innerHTML = formatMessage(assistantText);
-                                scrollToBottom(false);
+                                newlyAddedText = true;
                             }
                         }
                     }
                     console.warn('Erreur de parsing ou chunk corrompu', e);
+                }
+            }
+            if (newlyAddedText) {
+                const now = Date.now();
+                if (now - lastRenderTime > 33) {
+                    textEl.innerHTML = formatMessage(assistantText) + '<span class="cursor"></span>';
+                    scrollToBottom(false);
+                    lastRenderTime = now;
                 }
             }
         }

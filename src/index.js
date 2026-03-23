@@ -280,14 +280,17 @@ app.post('/api/chat', async (c) => {
     const licenseKey = auth.licenseToken;
     const discordName = auth.discordUser ? auth.discordUser.username : 'Utilisateur';
 
+    // BACKGROUND TASK: Save conversation and user message to D1 without blocking the AI request
     if (licenseKey && conversationId) {
-        await c.env.DB.prepare('INSERT OR REPLACE INTO conversations (id, license_key, title, updated_at) VALUES (?, ?, ?, datetime("now"))')
-            .bind(conversationId, licenseKey, `[${discordName}] ` + (title || 'Nouvelle conversation')).run();
-        
-        const lastClientMsg = messages[messages.length - 1];
-        const userTextContent = typeof lastClientMsg.content === 'string' ? lastClientMsg.content : '[Multimédia]';
-        await c.env.DB.prepare('INSERT INTO messages (conversation_id, role, content) VALUES (?, ?, ?)')
-            .bind(conversationId, 'user', userTextContent).run();
+        c.executionCtx.waitUntil((async () => {
+            await c.env.DB.prepare('INSERT OR REPLACE INTO conversations (id, license_key, title, updated_at) VALUES (?, ?, ?, datetime("now"))')
+                .bind(conversationId, licenseKey, `[${discordName}] ` + (title || 'Nouvelle conversation')).run();
+            
+            const lastClientMsg = messages[messages.length - 1];
+            const userTextContent = typeof lastClientMsg.content === 'string' ? lastClientMsg.content : '[Multimédia]';
+            await c.env.DB.prepare('INSERT INTO messages (conversation_id, role, content) VALUES (?, ?, ?)')
+                .bind(conversationId, 'user', userTextContent).run();
+        })());
     }
 
     let processedMessages = messages;
@@ -383,7 +386,8 @@ app.post('/api/chat', async (c) => {
         headers: {
             'Content-Type': 'text/event-stream',
             'Cache-Control': 'no-cache',
-            'Connection': 'keep-alive'
+            'Connection': 'keep-alive',
+            'X-Accel-Buffering': 'no'
         }
     });
 });
