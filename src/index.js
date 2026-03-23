@@ -2,6 +2,7 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { secureHeaders } from 'hono/secure-headers';
 import { getSignedCookie, setSignedCookie, deleteCookie } from 'hono/cookie';
+import { serveStatic } from 'hono/cloudflare-pages';
 
 const app = new Hono();
 
@@ -415,5 +416,8 @@ app.post('/api/chat', async (c) => {
         }
     });
 });
+
+// Serve frontend static assets (HTML, CSS, JS) from Cloudflare Pages
+app.get('/*', serveStatic());
 
 export default app;
